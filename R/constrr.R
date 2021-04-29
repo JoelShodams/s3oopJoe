@@ -54,8 +54,8 @@ constrr=function(x,y, alpha=double(), paired=logical()){
              testssummary=ttest, data=dd
 
   )
-class(dd)<- "Rttest"
-llist
+  class(dd)<- "Rttest"
+  llist
 
 
   #dd<- list(x=x,y=y)
@@ -64,9 +64,9 @@ llist
 
 #plot.Rttest <- function(x,...){
 #    plot(x$x ~ x$y, xlab= 'X',ylab="Y")
-#  }
+  }
 
 
 
 
-}
+
