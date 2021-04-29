@@ -62,9 +62,9 @@ llist
   #class(dd) <- "Rttest"
 
 
-plot.Rttest <- function(x,...){
-    plot(x$x ~ x$y, xlab= 'X',ylab="Y")
-  }
+#plot.Rttest <- function(x,...){
+#    plot(x$x ~ x$y, xlab= 'X',ylab="Y")
+#  }
 
 
 
