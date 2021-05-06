@@ -1,9 +1,9 @@
-#' Constructor Function for Hypothesis Test
+#' @title Constructor Function for Hypothesis Test
 #'
 #' This functions main purpose is to
 #'
 #' The constructor makes an object and tests for NULL Hypothesis to
-#' verify if the underlying means of two populaions are equal
+#' verify if the underlying means of two populations are equal
 #'
 #' @param x vector sample from First population
 #' @param y vector sample from second population
@@ -12,19 +12,24 @@
 #'
 #'
 #' @return List of data containing several outputs
+#'
+#'
 #' @export
 #'
 #' @examples
-#' Constrr(x,y)
-constrr=function(x,y, alpha=double(), paired=logical()){
-  stopifnot(is.double(alpha))
-  stopifnot(is.logical(paired))
+#'
+#' x=rnorm(20,mean=10,sd=15);y=rnorm(10,mean=8,sd=15);constrr(x,y,0.05,FALSE)
 
-  dat=rep(c("x","y"),c(length(x),length(y)))
-  data_=data.frame(dat=dat, t=c(x,y))
 
+myttest=function(x,y, alpha=double(), paired=logical()){
+  stopifnot(is.double(alpha)) #checks the data structure for alpha
+  stopifnot(is.logical(paired)) #checks the data structure for paired
+
+
+#Checks if the data given is paired if not..
   if(paired=="FALSE"){
     var_test=var.test(x,y)
+
 
   if(var_test$p.value>alpha){
     ttest=t.test(x,y,paired=FALSE,var.equal=TRUE)
@@ -35,36 +40,37 @@ constrr=function(x,y, alpha=double(), paired=logical()){
      testresult="Welch"
      }
   }
+  #Conditional statement for paired data
   else{
     stopifnot(length(x)==length(y))
     ttest=t.test(x,y,paired=TRUE)
     testresult="Paired"}
 
+  #conditional statement to check for Null Hypothesis if pvalue is greater or less than alpha
   if(ttest$p.value<alpha){
     NH="Y"
   }
   else{NH="N"}
 
+  columns_ <- rep(c("x","y"), c(length(x),length(y)))
 
-  dd<- list(x=x,y=y)
 
+
+  values<- c(x,y)
+  Table_=data.frame("values"=values, "categories"=columns_)
   #List to be printed
-  llist<-list(Test_type=testresult,
+
+  llist=list(Test_type=testresult,
              "Reject NUll?"=NH,
-             testssummary=ttest, data=dd
+             t_test=ttest,data=Table_,paired=paired, CI=ttest$conf.int)
 
-  )
-  class(dd)<- "Rttest"
+  class(llist) <- "Rttest" #A Class is created and attached
   llist
+}
 
 
-  #dd<- list(x=x,y=y)
-  #class(dd) <- "Rttest"
 
 
-#plot.Rttest <- function(x,...){
-#    plot(x$x ~ x$y, xlab= 'X',ylab="Y")
-  }
 
 
 

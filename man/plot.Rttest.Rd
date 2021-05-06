@@ -7,7 +7,7 @@
 \method{plot}{Rttest}(x, ...)
 }
 \arguments{
-\item{x}{Object from the constructor function "constrr"}
+\item{x}{Object from the constructor function "myttest"}
 
 \item{...}{additional values for plotting}
 }
