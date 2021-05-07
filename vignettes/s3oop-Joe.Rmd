@@ -17,3 +17,68 @@ knitr::opts_chunk$set(
 ```{r setup}
 library(s3oopJoe)
 ```
+
+# Introduction
+
+`s3oopJoe` is a package used to test for Null Hypothesis using the function ttest
+
+# Functions
+
+There are three function is used in this package.
+1. Constructor
+2. Print method
+3. Plot method
+
+
+# Constructor
+
+The first function is `myttest` which takes in two parameters.
+The first sample population (x) and second sample population (y),
+Alpha values and a logical parameter stating if the mean populations are paired
+it outputs a list of useful information based on the function which are further
+processed by the methods functions.
+This list is stored in a class which is called Rttest
+
+```{r}
+x <- rnorm(30, 20, 10)
+y <- rnorm(30, 10, 12)
+ans <- myttest(x=x, y=x, alpha=0.05, paired = FALSE)
+
+
+```
+# Method1
+The first method is the plot function
+which makes a box plot of the two samples "x" and "y"
+```
+
+
+This is called using the class Rttest
+```{r}
+
+plot(ans)
+
+```
+
+
+
+# Method2
+The second method is the print function
+print.Rttest() which prints the confidence Interval
+
+```
+
+
+This is called using the
+```{r}
+print(ans)
+```
+
+# Shiny App
+
+This is used to package the function in an App 
+
+```{r,eval = FALSE}
+plotShiny()
+
+
+

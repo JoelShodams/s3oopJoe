@@ -7,6 +7,6 @@
 #' \dontrun{plotShiny()}
 
 plotShiny<- function(){
-  shiny::runApp(system.file("shinyshiny/Application/Package", package
+  shiny::runApp(system.file("inst/Shiny", package
   = "s3oopJoe"), launch.browser=TRUE)
 }

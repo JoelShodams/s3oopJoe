@@ -13,12 +13,13 @@ plot.Rttest <- function(x, ...){
   boxxplot<-ggplot(dff, aes(x=categories,y=values, colour=categories )) + geom_boxplot(aes(fill=values)) #plots the data
   boxxplot<-boxxplot + ggtitle(paste(
     "P value =",
-    round(x$t_test$p.value,4),
+    round(x$t_test$p.value, 4),
     "Type of Test = ",
     x$Test_type,
     "Paired = ",
-    x$paired,
-  )
+    x$paired)
+
   )
   print(boxxplot)
 }
+
