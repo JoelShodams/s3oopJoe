@@ -1,6 +1,6 @@
 Package: s3oopJoe
 Type: Package
-Title: Creates a Package for testing
+Title: Creates a Package for Hypothesis testing
 Version: 0.1.0
 Author: Joel Shodamola
 Maintainer: Joel Shodamola <Joelshodams@ou.edu>
